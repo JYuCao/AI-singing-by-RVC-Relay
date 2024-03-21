@@ -66,7 +66,7 @@ pip install -u numpy==1.23.5
 
 ## 2. RVC 的部署
 ### 2.1 下载 RVC
-鉴于很多人可能无法科学上网，[此处网盘链接]()打包了RVC的仓库压缩包，并附带了一些必需文件：
+鉴于很多人可能无法科学上网，[此处网盘链接](链接：https://pan.baidu.com/s/1HPWJfhtMOV_w3CsNPoZZQA?pwd=6o1s)打包了RVC的仓库压缩包，并附带了一些必需文件：
 ```
 Retrieval-based-Voice-Conversion-WebUI-main/ffmpeg.exe
 Retrieval-based-Voice-Conversion-WebUI-main/ffprobe.exe
