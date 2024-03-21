@@ -1,6 +1,7 @@
 # 基于RVC和Replay的声音转换框架的一种本地部署方案
 最近闲来无事，突然有想把朋友声音训练成AI来唱歌的想法。最开始打算使用 So-VITS-SVC 4.0，但这个框架太久没有更新，在部署环境时出现了极难解决的问题，只好作罢。最终决定采用 Retrieval-based-Voice-Conversion-WebUI(RVC) 作为训练和推理框架，在踩过无数的坑之后才得以成功。
 网上关于RVC部署的相关的文档过时且很少，并且没有本地部署的教程，所以我写此文档对于本地部署进行记录，望能帮助有同样想法的人。
+
 本人才刚接触这方面的训练和推理，对于这方面知之甚少，所以本文档仅保证部署环节的正确性。请容忍训练和推理方面的错误。敬请指正。<br/>
 __事先声明__，本机部署环境为 __Windows11__ 和 __n卡__。若环境不同，文档不保证根据下文能成功进行部署。
 ## 1. Python 环境搭建
@@ -73,6 +74,7 @@ Retrieval-based-Voice-Conversion-WebUI-main/assets/hubert/hubert_base.pt
 Retrieval-based-Voice-Conversion-WebUI-main/assets/rmpve/rmpve.pt
 ```
 可直接下载解压使用。
+
 若出现问题或有疑问可参考 [RVC 的 github 页面](https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI?tab=readme-ov-file)。
 ### 2.2 启动 RVC
 在 cmd 中输入下列语句，跳转到 RVC 解压后所在的目录（路径为示例）：
@@ -97,13 +99,17 @@ python infer-web.py
 点击跳转到如下页面“伴奏人声分离&去混响&去回声”。
 ![](./pictures/4.png)
 准备一定长度的用于训练的音频，官方推荐长度最好在10-50min，如果音频质量好，可以只准备5-10min。
+
 将音频文件夹路径输入到页面中，也可以直接将音频文件拖入。模型先使用HP2跑一遍，再使用DeEcho-Aggressive跑一遍。（这里我对于这些模型的使用还没有研究透彻，这不是最优方案，暂时照这个做就行）
+
 输出文件夹在没有指定的情况下，会存放在项目根目录的`opt`文件夹下，也可自己指定输出目录。
 ### 3.2 训练
 点击跳转到如下页面“训练”。
 ![](./pictures/5.png)
 实验名自定义，训练文件夹路径选择处理过的声源文件夹，保证文件夹内只有处理过的人声存在。剩下的可以不用更改。
+
 关于训练轮数，在数据集音质较差的情况下，20-30即可。如果数据集音质很好，可以加大训练力度。
+
 点击“一键训练”等待训练结束。训练结束后会在`.\assets\weights`下生成最终的.pth文件，在`.\assets\indices`下生成最终的.index文件。
 ## 3 推理生成AI歌曲
 ### 3.1 Replay的下载安装
