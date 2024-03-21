@@ -126,6 +126,8 @@ python infer-web.py
 
 ## 参考
 RVC github: https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI?tab=readme-ov-file
+
 RVC 使用模型：https://huggingface.co/lj1995/VoiceConversionWebUI/tree/main
+
 Replay+RVC极简操作：四步操作替换声音，分分钟秒实现AI唱歌：
 https://cloud.tencent.com/developer/news/1298807
